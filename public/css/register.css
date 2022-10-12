@@ -1,0 +1,29 @@
+.login {
+    height: 80%;
+    padding: 1.5% 0 1.5% 0;
+}
+
+.body-login {
+    overflow-y: auto;
+}
+
+.body-login > form {
+    margin-top: 10%;
+}
+
+.body-login > form > button {
+    padding: 1% 0;
+}
+
+.pagos { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+
+.pago > p, .pago2 > p {
+    margin-inline: 5px;
+}
