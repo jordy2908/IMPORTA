@@ -15,9 +15,16 @@ class get_all extends Controller
     public function get_all(Request $request) {
         //$c = concentrados::all();
         //return view('welcome', compact('c'));
+        $buscador = concentrados::all();
+        return view('home', compact('buscador'));
+    }
+
+    public function get_all_(Request $request) {
+        //$c = concentrados::all();
+        //return view('welcome', compact('c'));
         $buscarpor = $request -> get('buscarpor');
-        $buscador = concentrados::where('pais_procedencia', 'like', '%'.strtoupper($buscarpor).'%')-> orwhere('descripcion_despacho', 'like', '%'.strtoupper($buscarpor).'%')-> orwhere('posicion_arancelaria', 'like', '%'.strtoupper($buscarpor).'%')->paginate($this::pag);
-        return view('home', compact('buscador', 'buscarpor'));
+        $buscador = concentrados::where('pais_procedencia', 'like', '%'.strtoupper($buscarpor).'%')->paginate($this::pag);
+        return view('main', compact('buscador', 'buscarpor'));
     }
 
     public function get(concentrados $proveedor) {

@@ -1,4 +1,4 @@
-<div class="table-container" style="overflow-x:auto;">
+<div class="table-container" id="table2" style="overflow-x:auto;">
     <table id="tabla">
             <tr>
                 <!-- <th>RUC</th>  ADMIN/SUPERADMIN -->

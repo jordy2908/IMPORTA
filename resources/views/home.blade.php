@@ -10,13 +10,15 @@
     <script>
         window.addEventListener("load", function(){
             document.getElementById('buscador').addEventListener("keyup", function(){
-                fetch(`/?buscarpor=${document.getElementById("buscador").value}`,{
+                fetch(`/buscador?buscarpor=${document.getElementById("buscador").value}`,{
                     method: 'get'
                 })
                 .then(response => response.text())
                 .then(html => {
-                    document.getElementById("blur").innerHTML = html
-                    document.getElementById("table").style.display = 'block'
+                    document.getElementById("table").style.display = "block"
+                    document.getElementById("table2").style.display = "none"
+                    document.getElementById("sorpresa").innerHTML = html
+                    document.getElementById("sorpresa").style.display = "block"
                 })
             })
         })
@@ -33,14 +35,18 @@
                 <div class="container-search">
 
                     <form >
-                        <input type="text" name="buscarpor" id="buscador" value="{{ $buscarpor }}" placeholder="Descripción comercial / país / subpartida arancelaria / nombre arancelario" >
+                        <input type="text" name="buscarpor" id="buscador" placeholder="Descripción comercial / país / subpartida arancelaria / nombre arancelario" >
                         <button type="submit" class="button-brow" >
                             <i class="fa fa-search" style="font-size: 20px;"></i>
                         </button>
                     </form>
                 </div>
 
+
                 <div class="blur" id="table" style="display: none;">
+                <div class="table-container" style="overflow-x:auto;">
+                    <div id="sorpresa" style="display: none;"></div>
+
                     @if ( auth() -> check() )
                         @if ( auth() -> user() -> busqueda )
                             @include('main')

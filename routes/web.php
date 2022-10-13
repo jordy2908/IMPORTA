@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\get_all::class, 'get_all']) -> name('home');
+Route::get('/buscador', [\App\Http\Controllers\get_all::class, 'get_all_']) -> name('home.buscador');
 Route::get('/get/{proveedor}', [\App\Http\Controllers\get_all::class, 'get']) -> name('home.get');
 Route::get('/get_pdf/{proveedor}', [\App\Http\Controllers\get_all::class, 'get_pdf']) -> name('home.pdf');
 
