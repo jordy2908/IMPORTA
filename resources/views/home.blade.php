@@ -35,7 +35,7 @@
                 <div class="container-search">
 
                     <form >
-                        <input type="text" name="buscarpor" id="buscador" placeholder="Descripción comercial / país / subpartida arancelaria / nombre arancelario" >
+                        <input type="text" name="buscarpor" id="buscador" autocomplete="off" placeholder="Descripción comercial / país / subpartida arancelaria / nombre arancelario" >
                         <button type="submit" class="button-brow" >
                             <i class="fa fa-search" style="font-size: 20px;"></i>
                         </button>

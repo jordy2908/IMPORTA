@@ -40,7 +40,7 @@
                 </div>
                 <div class="buttons-login">
                     @if (auth()->check())
-                        <button onclick="location.href=`{{ route('login.destroy') }}`"> Logout </button>
+                        <button class="logout" onclick="location.href=`{{ route('login.destroy') }}`"> Logout </button>
                     @else
                         <button onclick="location.href=`{{ route('login.index') }}`"> Login </button>
                         <button onclick="location.href=`{{ route('register.index') }}`"> Register </a> </button>
