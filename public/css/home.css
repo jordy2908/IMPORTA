@@ -1,6 +1,7 @@
 .container-home {
     width: 100%;
     height: 100vh;
+    padding-top: 4%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +45,33 @@ input:focus {
     color: red;
 }
 
+.calculadora {
+    padding-top: 2%
+}
+
+.c-titulo {
+    margin-bottom: 3%;
+}
+
+.c-cuerpo1, .c-cuerpo2, .c-resultado {
+    margin-inline: 1%;
+}
+
+.c-cuerpo1 > input, .c-cuerpo2 > input, .c-resultado > input {
+    padding: 5% 10%;
+    margin-bottom: 2%;
+}
+
+.ico {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    margin-bottom: 0.5%;
+}
+
+i {
+    cursor: pointer;
+}
 /* RESPONSIVE */
 
 @media screen and (max-width: 1050px) {

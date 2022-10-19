@@ -81,8 +81,17 @@
 
     <script>
 
+        //PRODUCTOS
         var productos = [];
         var valores = [];
+
+        //USUARIOS
+        var nombres = []
+        var busqieda = 0
+        var sin_B = 0
+        var ninguna = 0
+        var visa = 0
+        var paypal = 0
 
         function openDiv(evt, cityName) {
         
@@ -106,7 +115,7 @@
             evt.currentTarget.className += " active";
         }
 
-        /* ---- RECOLECCION DE DATOS DASHBOARD ---- */
+        /* ---- RECOLECCION DE DATOS DASHBOARD PRODUCTOS ---- */
 
         async function postData(url = '', data = {}) {
         // Default options are marked with *
@@ -129,20 +138,20 @@
             postData('/admin/all', { _token: $('meta[name="csrf-token"]').attr("content") })
             .then((data) => {
                 for (var x = 0; x < data.length; x++) {
-                    console.log(data[x].proveedor, data[x].seguro_u);
+                    //console.log(data[x].proveedor, data[x].seguro_u);
                     productos.push(data[x].proveedor);
                     valores.push(parseFloat(data[x].seguro_u.replace(',', '.'))) // JSON data parsed by `data.json()` call
                 }
 
                 
                 
-                console.log(valores)
+                //console.log(valores)
                 const ctx = document.getElementById('myChart').getContext('2d');
                 const myChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
                     axis: 'y',
-                    labels: productos   ,
+                    labels: productos,
                     datasets: [{
                         label: 'DASHBOARD',
                         data: valores,
@@ -191,7 +200,99 @@
         })
             
 
-        /* ---- DASHBOARD ---- */
+        /* ---- DASHBOARD USUARIOS ---- */
+
+        async function postData(url = '', data = {}) {
+        // Default options are marked with *
+            const response = await fetch(url, {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: JSON.stringify(data) // body data type must match "Content-Type" header
+            });
+            return response.json(); // parses JSON response into native JavaScript objects
+            }
+
+            postData('/admin/users', { _token: $('meta[name="csrf-token"]').attr("content") })
+            .then((data) => {
+                for (var x = 0; x < data.length; x++) {
+                    if (data[x].busqueda){
+                        busqieda += 1;
+                        console.log(data[x].busqueda);
+                        nombres.push(data[x].name);
+                    } else if (data[x].busqueda === false){
+                        sin_B += 1;
+                    } else {
+                        ninguna += 1;
+                    } if (data[x].pago == "PAYPAL") {
+                        console.log(data[x].pago);
+                        paypal += 1;
+                    } else if (data[x].pago = "VISA"){
+                        visa += 1;
+                    } 
+                }
+
+                
+                
+                const ctx = document.getElementById('myChart1').getContext('2d');
+                const myChart = new Chart(ctx, {
+                type: 'polarArea',
+                data: {
+                    axis: 'y',
+                    labels: ['N. usuarios', 'Proveedores', 'Aranceles', 'ninguno', 'Visa', 'Paypal' ]  ,
+                    datasets: [{
+                        label: 'USUARIOS',
+                        data: [x ,busqieda, sin_B, ninguna, visa, paypal],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+
+                    plugins: {
+                        legend: {
+                            maxHeight: 200,
+                display: true,
+                labels: {
+                    color: 'rgb(255, 99, 132)',
+
+                },
+            }
+                    }
+
+                }
+            });
+            });
+
     }
 
 

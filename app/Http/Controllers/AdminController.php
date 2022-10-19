@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\concentrados;
-
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -18,6 +18,11 @@ class AdminController extends Controller
 
     public function all(Request $request) {
         $concentrados = concentrados::all();
+        return response(json_decode($concentrados), 200) -> header('content-type', 'text/plain');
+    }
+
+    public function users(Request $request) {
+        $concentrados = User::all();
         return response(json_decode($concentrados), 200) -> header('content-type', 'text/plain');
     }
 }

@@ -1,4 +1,4 @@
-<div class="table-container" style="overflow-x:auto;">
+<div class="table-container" id="table2" style="overflow-x:auto;">
     <table id="tabla">
             <tr>
                 <th>DESCRIPCION COMERCIAL</th>
@@ -19,8 +19,8 @@
             @else
                 @foreach ($buscador as $c)
                 <tr>
-                    <td> <div class="descripcion">{{$c -> xxx.xx.xx.xx}}</div> </td> <!-- PAGO -->
-                    <td id="arancel">{{$c -> xxxx.xx.xx.xx}}</td>
+                    <td> <div class="descripcion">{{$c -> descripcion_despacho}}</div> </td> <!-- PAGO -->
+                    <td id="arancel">XXX.XX.XX.XX</td>
                 </tr>
                 @endforeach
             @endif
