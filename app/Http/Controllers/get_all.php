@@ -12,6 +12,13 @@ use function Ramsey\Uuid\v1;
 class get_all extends Controller
 {
     const pag = 10000;
+
+
+    public function index() {
+        return view('auth.login');
+    }
+
+
     public function get_all(Request $request) {
         //$c = concentrados::all();
         //return view('welcome', compact('c'));

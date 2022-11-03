@@ -178,7 +178,6 @@ img {
 
   .buttons-login > button {
     width: 53%;
-    margin: 0%;
   }
 }
 
@@ -217,4 +216,10 @@ img {
   .buttons-login > button{
     margin-left: 47;
   }
+
+  td > a > img.pdf {
+    min-width: 30px;
+  }
+
+  
 }

@@ -117,6 +117,16 @@
             });
         })
 
+        var html = "<table>";
+        for(var i=0; i < array.length; i++){
+            var row = Object.keys(array[i]);
+            html += "<tr>";
+             for(var x=0; x < row.length; x++){
+                  html += "<td>" + row[x] + "</td>";
+             }
+            html += "<tr>";
+        }
+        html += "</table>";
     </script>
 
 

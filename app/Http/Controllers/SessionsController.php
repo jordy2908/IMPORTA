@@ -19,7 +19,7 @@ class SessionsController extends Controller
             if (auth() -> user() -> admin == true) {
                 return redirect() -> route('admin.index');
             } else {
-                return redirect() -> to('/');
+                return redirect() -> to('/home');
             }
         }
     }

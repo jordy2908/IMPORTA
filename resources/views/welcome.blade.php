@@ -43,10 +43,10 @@
                 </div>
                 <div class="buttons-login">
                     @if (auth()->check())
-                        <button class="logout" onclick="location.href=`{{ route('login.destroy') }}`"> Logout </button>
+                        <button class="logout" onclick="location.href=`{{ route('login.destroy') }}`"> Salir </button>
                     @else
-                        <button onclick="location.href=`{{ route('login.index') }}`"> Login </button>
-                        <button onclick="location.href=`{{ route('register.index') }}`"> Register </a> </button>
+                        <button onclick="location.href=`{{ route('login.index') }}`"> Entra! </button>
+                        <button onclick="location.href=`{{ route('register.index') }}`"> Registrate! </a> </button>
                     @endif
                 </div>
             </div>

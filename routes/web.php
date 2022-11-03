@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\get_all::class, 'get_all']) -> name('home');
+Route::get('/', [\App\Http\Controllers\get_all::class, 'index']) -> name('index');
+Route::get('/home', [\App\Http\Controllers\get_all::class, 'get_all']) -> name('home');
+
 Route::get('/buscador', [\App\Http\Controllers\get_all::class, 'get_all_']) -> name('home.buscador');
 Route::get('/buscador_', [\App\Http\Controllers\get_all::class, 'get_all__']) -> name('home.buscador1');
 Route::get('/all', [\App\Http\Controllers\get_all::class, 'all_']) -> name('home.all');
-Route::get('/alll', [\App\Http\Controllers\get_all::class, 'all__']) -> name('home.all');
+Route::get('/alll', [\App\Http\Controllers\get_all::class, 'all__']) -> name('home.alll');
 Route::get('/get/{proveedor}', [\App\Http\Controllers\get_all::class, 'get']) -> name('home.get');
 Route::get('/get_pdf/{proveedor}', [\App\Http\Controllers\get_all::class, 'get_pdf']) -> name('home.pdf');
 
@@ -30,4 +32,4 @@ Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'creat
 
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']) -> middleware('admin.auth') -> name('admin.index');
 Route::post('/admin/all', [\App\Http\Controllers\AdminController::class, 'all']) -> middleware('admin.auth') -> name('admin.all');
-Route::post('/admin/users', [\App\Http\Controllers\AdminController::class, 'users']) -> middleware('admin.auth') -> name('admin.all');
+Route::post('/admin/users', [\App\Http\Controllers\AdminController::class, 'users']) -> middleware('admin.auth') -> name('admin.alll');
